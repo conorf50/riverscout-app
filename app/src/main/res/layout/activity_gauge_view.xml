@@ -9,22 +9,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="395dp"
-            android:layout_height="469dp"
+            android:layout_height="582dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.918">
-
-        <TextView
-                android:text="Graph View"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView2" android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.918" android:id="@+id/constraintLayout">
+        <ImageView
+                android:src="@android:color/darker_gray"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/imageView3" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
             android:text="Suir @ Old Bridge"
@@ -33,5 +32,25 @@
             android:id="@+id/gauge_name" android:fontFamily="sans-serif-light"
             android:textSize="20sp" android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="28dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.615"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="1.0"/>
+    <ImageView
+            android:src="@drawable/ic_place_black_24dp"
+            android:tint="@color/colorAccent"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView5" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/gauge_name" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.036"/>
+    <TextView
+            android:text="52.26, -7.83"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView7"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/gauge_name" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.317" android:layout_marginEnd="244dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView5" android:layout_marginStart="8dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
