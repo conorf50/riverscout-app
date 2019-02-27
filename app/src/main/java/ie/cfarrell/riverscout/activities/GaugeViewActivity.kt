@@ -10,6 +10,7 @@ class GaugeViewActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gauge_view)
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        super.setTitle("View Details")
     }
 
 }
