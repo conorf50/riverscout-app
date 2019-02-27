@@ -1,9 +1,8 @@
-package ie.cfarrell.riverscout
+package ie.cfarrell.riverscout.activities
 
 import android.os.Bundle
 import android.app.Activity
-
-import kotlinx.android.synthetic.main.activity_gauge_view.*
+import ie.cfarrell.riverscout.R
 
 class GaugeViewActivity : Activity() {
 

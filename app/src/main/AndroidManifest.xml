@@ -10,7 +10,11 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".GaugeViewActivity"
+                android:name=".activities.FavouritesActivity"
+                android:label="@string/title_activity_favourites_">
+        </activity>
+        <activity
+                android:name=".activities.GaugeViewActivity"
                 android:label="@string/title_activity_gauge_view"
                 android:parentActivityName=".activities.MainActivity">
             <meta-data
