@@ -12,6 +12,7 @@
         <activity
                 android:name=".activities.FavouritesActivity"
                 android:label="@string/title_activity_favourites_">
+                android:parentActivityName=".activities.MainActivity">
         </activity>
         <activity
                 android:name=".activities.GaugeViewActivity"
