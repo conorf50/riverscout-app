@@ -74,10 +74,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivityForResult(intent, 0)
 
             }
-            R.id.nav_home -> {
-                val intent = Intent(this, GaugeViewActivity::class.java)
-                startActivityForResult(intent, 0)
-            }
+//            R.id.nav_home -> {
+//                val intent = Intent(this, GaugeViewActivity::class.java)
+//                startActivityForResult(intent, 0)
+//            }
             R.id.nav_list -> {
 
 
