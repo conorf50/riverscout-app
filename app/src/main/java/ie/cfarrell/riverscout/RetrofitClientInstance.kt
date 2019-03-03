@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClientInstance {
 
     private var retrofit: Retrofit? = null
-    private val BASE_URL = "http://34.248.131.182:8080/api"
+    private val BASE_URL = "http://34.248.131.182:8080/"
 
     // create a retrofit instance, only if it has not been created yet.
     val retrofitInstance: Retrofit?

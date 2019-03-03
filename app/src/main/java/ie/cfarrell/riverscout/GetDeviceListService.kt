@@ -9,7 +9,7 @@ interface GetDeviceListService {
     // get retrofit to call the model and make the request
 
     // call our API route /devices
-    @GET("/devices")
-    fun getAllDevices() : Call<deviceListModel>
+    @GET("/api/getAllDevices")
+    fun getAllDevices() : Call<List<deviceListModel>>
 
 }
