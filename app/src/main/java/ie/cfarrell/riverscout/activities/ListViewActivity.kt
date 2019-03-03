@@ -10,22 +10,26 @@ import ie.cfarrell.riverscout.R
 import ie.cfarrell.riverscout.deviceListAdapter
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
 import ie.cfarrell.riverscout.models.deviceListModel
+import kotlinx.android.synthetic.main.activity_list.*
 
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ListViewActivity : AppCompatActivity() {
-    // variables for the recyclerView
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-    private lateinit var viewManager: RecyclerView.LayoutManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
         // display a back button in the app bar
         actionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // Set the RecyclerView layout manager
+        val layoutManager = LinearLayoutManager(this)
+//        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        allDevicesView.layoutManager = layoutManager
+
 
         // Invoke the Retrofit instance here
         // see https://www.youtube.com/watch?v=FW7sY7M_E8k for details
@@ -37,9 +41,11 @@ class ListViewActivity : AppCompatActivity() {
         results?.enqueue(object : Callback<List<deviceListModel>> {
             override fun onResponse(call: Call<List<deviceListModel>>, response: Response<List<deviceListModel>>) {
                 //'response' contains the parsed JSON
-                val body = response.body()
+                var allDevicesList = response.body()
                 Toast.makeText(applicationContext,"Successful", Toast.LENGTH_LONG).show()
-                var listSize = body?.size
+                val adapter = deviceListAdapter(applicationContext, allDevicesList)
+                allDevicesView.adapter = adapter
+
 
             }
 
@@ -50,10 +56,7 @@ class ListViewActivity : AppCompatActivity() {
 
         })
         // Handle RecyclerView stuff
-        // todo pass array of device names into this instead
-        var myDataset = arrayOf("Hello", "World", "Conor")
-        viewManager = LinearLayoutManager(this)
-        viewAdapter = deviceListAdapter(myDataset)
+
 
     }
 
