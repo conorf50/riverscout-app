@@ -26,9 +26,8 @@ class ListViewActivity : AppCompatActivity() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Set the RecyclerView layout manager
-        val layoutManager = LinearLayoutManager(this)
-//        layoutManager.orientation = LinearLayoutManager.VERTICAL
-        allDevicesView.layoutManager = layoutManager
+        var layoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = RecyclerView.VERTICAL
 
 
         // Invoke the Retrofit instance here
@@ -36,14 +35,15 @@ class ListViewActivity : AppCompatActivity() {
         val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceListService::class.java)
         // store the results of this in a variable
         val results = service?.getAllDevices() // '?' because this API call may return nothing it may be null
-
         // put the network operation in a seperate thread
         results?.enqueue(object : Callback<List<deviceListModel>> {
             override fun onResponse(call: Call<List<deviceListModel>>, response: Response<List<deviceListModel>>) {
                 //'response' contains the parsed JSON
                 var allDevicesList = response.body()
-                Toast.makeText(applicationContext,"Successful", Toast.LENGTH_LONG).show()
-                val adapter = deviceListAdapter(applicationContext, allDevicesList)
+                Toast.makeText(applicationContext,"Found " + allDevicesList?.size.toString(), Toast.LENGTH_LONG).show()
+                val adapter = deviceListAdapter(this@ListViewActivity, allDevicesList)
+
+                allDevicesView.layoutManager = layoutManager
                 allDevicesView.adapter = adapter
 
 
@@ -55,7 +55,6 @@ class ListViewActivity : AppCompatActivity() {
             }
 
         })
-        // Handle RecyclerView stuff
 
 
     }
