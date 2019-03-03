@@ -32,8 +32,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val imageButtonList = findViewById<ImageButton>(R.id.buttonViewRivers)
         imageButtonList?.setOnClickListener {
-            Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
+            //startActivityForResult(ListViewActivity)
+            val intent = Intent(this, ListViewActivity::class.java)
+            startActivityForResult(intent, 0)
         }
+
+
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             R.string.navigation_drawer_open,
@@ -83,7 +88,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //            }
             R.id.nav_list -> {
 
-
+                val intent = Intent(this, ListViewActivity::class.java)
+                startActivityForResult(intent, 0)
             }
 
         }
