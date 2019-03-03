@@ -7,6 +7,8 @@ import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import android.widget.ImageButton
+import android.widget.Toast
 import ie.cfarrell.riverscout.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -26,11 +28,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
 
+
+        val imageButtonList = findViewById<ImageButton>(R.id.buttonViewRivers)
+        imageButtonList?.setOnClickListener {
+            Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
+        }
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
             R.string.navigation_drawer_open,

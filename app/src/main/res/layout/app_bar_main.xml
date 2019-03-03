@@ -20,8 +20,54 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </com.google.android.material.appbar.AppBarLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+                android:layout_width="413dp"
+                android:layout_height="155dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="56dp" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.003">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <include layout="@layout/homepage_recycler"/>
+                <TextView
+                        android:text="LIST"
+                        android:layout_width="wrap_content"
+                        android:layout_height="21dp"
+                        android:id="@+id/textView7"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button" android:textSize="18sp"
+                        android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.023" app:layout_constraintVertical_bias="0.975"/>
+                <ImageButton
+                        android:layout_width="382dp"
+                        android:layout_height="112dp" app:srcCompat="@drawable/river"
+                        android:id="@+id/buttonViewRivers" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.466"
+                        app:layout_constraintVertical_bias="0.0"/>
+                <TextView
+                        android:text="View all rivers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp"
+                        android:id="@+id/textView8"
+                        android:fontFamily="sans-serif-light" app:layout_constraintStart_toEndOf="@+id/textView7"
+                        android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/buttonViewRivers" android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.946"
+                        app:layout_constraintVertical_bias="0.0"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
             <!--android:id="@+id/fab"-->
