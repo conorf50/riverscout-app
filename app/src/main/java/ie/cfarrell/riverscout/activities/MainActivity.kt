@@ -7,6 +7,8 @@ import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import android.widget.ImageButton
+import android.widget.Toast
 import ie.cfarrell.riverscout.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -26,10 +28,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
+
+
+        val imageButtonList = findViewById<ImageButton>(R.id.buttonViewRivers)
+        imageButtonList?.setOnClickListener {
+            //Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
+            //startActivityForResult(ListViewActivity)
+            val intent = Intent(this, ListViewActivity::class.java)
+            startActivityForResult(intent, 0)
+        }
+
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar,
@@ -74,13 +82,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivityForResult(intent, 0)
 
             }
-//            R.id.nav_home -> {
-//                val intent = Intent(this, GaugeViewActivity::class.java)
-//                startActivityForResult(intent, 0)
-//            }
+            R.id.nav_map -> {
+                //val intent = Intent(this, GaugeViewActivity::class.java)
+                //startActivityForResult(intent, 0)
+                Toast.makeText(this, "Feature only available in Riverscout Premium", Toast.LENGTH_SHORT).show()
+
+            }
             R.id.nav_list -> {
 
-
+                val intent = Intent(this, ListViewActivity::class.java)
+                startActivityForResult(intent, 0)
             }
 
         }
