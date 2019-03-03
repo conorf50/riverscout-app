@@ -1,4 +1,4 @@
-package ie.cfarrell.riverscout
+package ie.cfarrell.riverscout.interfaces
 
 import ie.cfarrell.riverscout.models.deviceListModel
 import retrofit2.Call

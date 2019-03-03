@@ -3,9 +3,12 @@ package ie.cfarrell.riverscout.activities
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import ie.cfarrell.riverscout.GetDeviceListService
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import ie.cfarrell.riverscout.interfaces.GetDeviceListService
 import ie.cfarrell.riverscout.R
-import ie.cfarrell.riverscout.RetrofitClientInstance
+import ie.cfarrell.riverscout.deviceListAdapter
+import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
 import ie.cfarrell.riverscout.models.deviceListModel
 
 import retrofit2.Call
@@ -13,6 +16,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ListViewActivity : AppCompatActivity() {
+    // variables for the recyclerView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +29,6 @@ class ListViewActivity : AppCompatActivity() {
 
         // Invoke the Retrofit instance here
         // see https://www.youtube.com/watch?v=FW7sY7M_E8k for details
-
-
         val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceListService::class.java)
         // store the results of this in a variable
         val results = service?.getAllDevices() // '?' because this API call may return nothing it may be null
@@ -44,6 +49,11 @@ class ListViewActivity : AppCompatActivity() {
             }
 
         })
+        // Handle RecyclerView stuff
+        // todo pass array of device names into this instead
+        var myDataset = arrayOf("Hello", "World", "Conor")
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = deviceListAdapter(myDataset)
 
     }
 
