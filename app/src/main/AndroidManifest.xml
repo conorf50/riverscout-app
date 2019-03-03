@@ -10,7 +10,20 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".MainActivity"
+                android:name=".activities.FavouritesActivity"
+                android:label="@string/title_activity_favourites_">
+                android:parentActivityName=".activities.MainActivity">
+        </activity>
+        <activity
+                android:name=".activities.GaugeViewActivity"
+                android:label="@string/title_activity_gauge_view"
+                android:parentActivityName=".activities.MainActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="ie.cfarrell.riverscout.activities.MainActivity"/>
+        </activity>
+        <activity
+                android:name=".activities.MainActivity"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

@@ -1,15 +1,23 @@
-package ie.cfarrell.riverscout
+package ie.cfarrell.riverscout.activities
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
+import ie.cfarrell.riverscout.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+
+
+/*
+Define an 'extra message' which will be the database ID of the gauge that was clicked from the list
+ */
+var DATABASE_ID = "Not an ID"
+
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -24,7 +32,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //        }
 
         val toggle = ActionBarDrawerToggle(
-            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawer_layout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
@@ -59,16 +69,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
+            R.id.nav_favourites -> {
+                val intent = Intent(this, FavouritesActivity::class.java)
+                startActivityForResult(intent, 0)
 
             }
-            R.id.nav_slideshow -> {
+//            R.id.nav_home -> {
+//                val intent = Intent(this, GaugeViewActivity::class.java)
+//                startActivityForResult(intent, 0)
+//            }
+            R.id.nav_list -> {
 
-            }
-            R.id.nav_manage -> {
 
             }
 
