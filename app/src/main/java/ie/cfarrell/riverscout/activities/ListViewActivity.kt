@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ie.cfarrell.riverscout.interfaces.GetDeviceListService
 import ie.cfarrell.riverscout.R
-import ie.cfarrell.riverscout.deviceListAdapter
+import ie.cfarrell.riverscout.adapters.deviceListAdapter
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
 import ie.cfarrell.riverscout.models.deviceListModel
 import kotlinx.android.synthetic.main.activity_list.*
