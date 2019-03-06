@@ -49,11 +49,11 @@ class deviceListAdapter(val context: Context, val allDevices: List<deviceListMod
                 val deviceName = currentDevice?.displayName
                 val deviceID = currentDevice?._id
 
-               // val intent = Intent(itemView.context, GaugeViewActivity::class.java)
-                //intent.putExtra(deviceID, 0)
-                //startActivityForResult(intent, 0)
+               val intent = Intent(itemView.context, GaugeViewActivity::class.java)
+               // intent.putExtra(deviceID, 0)
+                context.startActivity(intent,null)
 
-                val intent = Intent(itemView.context, ListViewActivity::class.java)
+                //val intent = Intent(itemView.context, ListViewActivity::class.java)
                 //startActivityForResult(intent)
                 //startActivityForResult(GaugeViewActivity, context, 0)
             }
