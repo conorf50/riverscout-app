@@ -35,12 +35,13 @@ class deviceListAdapter constructor(val allDevices: List<deviceListModel>?,
         holder.bind(device, listener)
     }
 
-    override fun getItemCount(): Int = allDevices.size
+    override fun getItemCount(): Int = allDevices!!.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(device: deviceListModel,  listener : DeviceListListener) {
             itemView.deviceName.text = device.displayName
+            itemView.setOnClickListener { listener.onCardClick(device) }
 
         }
     }
@@ -101,4 +102,3 @@ class deviceListAdapter constructor(val allDevices: List<deviceListModel>?,
 //
 //    }
 //
-}

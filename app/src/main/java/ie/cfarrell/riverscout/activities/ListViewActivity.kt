@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ie.cfarrell.riverscout.interfaces.GetDeviceListService
 import ie.cfarrell.riverscout.R
+import ie.cfarrell.riverscout.adapters.DeviceListListener
 import ie.cfarrell.riverscout.adapters.deviceListAdapter
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
 import ie.cfarrell.riverscout.models.deviceListModel
@@ -16,7 +17,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ListViewActivity : AppCompatActivity() {
+class ListViewActivity : AppCompatActivity(), DeviceListListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,12 +47,14 @@ class ListViewActivity : AppCompatActivity() {
                 var allDevicesList = response.body()
                 Toast.makeText(applicationContext,"Found " + allDevicesList!!.size.toString(), Toast.LENGTH_LONG).show()
                 // replace the adapter with the one from placemark
-                val adapter = deviceListAdapter(allDevicesList, this)
-
-
+//                val adapter = deviceListAdapter(allDevicesList, this)
+//
+//
+//                allDevicesView.layoutManager = layoutManager
+//                allDevicesView.adapter = adapter
+                val layoutManager = LinearLayoutManager(this@ListViewActivity)
                 allDevicesView.layoutManager = layoutManager
-                allDevicesView.adapter = adapter
-
+                allDevicesView.adapter = deviceListAdapter(allDevicesList, this@ListViewActivity)
 
             }
 
@@ -65,5 +68,10 @@ class ListViewActivity : AppCompatActivity() {
 
 
     }
+
+
+    override fun onCardClick(device: deviceListModel) {
+            //todo add intent here
+          }
 
 }
