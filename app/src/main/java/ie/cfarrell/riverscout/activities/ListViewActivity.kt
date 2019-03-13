@@ -44,8 +44,9 @@ class ListViewActivity : AppCompatActivity() {
 
                 //'response' contains the parsed JSON
                 var allDevicesList = response.body()
-                Toast.makeText(applicationContext,"Found " + allDevicesList?.size.toString(), Toast.LENGTH_LONG).show()
-                val adapter = deviceListAdapter(this@ListViewActivity, allDevicesList)
+                Toast.makeText(applicationContext,"Found " + allDevicesList!!.size.toString(), Toast.LENGTH_LONG).show()
+                // replace the adapter with the one from placemark
+                val adapter = deviceListAdapter(allDevicesList, this)
 
 
                 allDevicesView.layoutManager = layoutManager
