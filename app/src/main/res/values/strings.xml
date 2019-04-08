@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Riverscout Basic</string>
+    <string name="app_name">Riverscout</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -9,4 +9,6 @@
     <string name="title_activity_gauge_view">View gauge details</string>
     <string name="title_activity_favourites_">Favourites</string>
     <string name="title_activity_list">List of rivers</string>
+
+
 </resources>
