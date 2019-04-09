@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".activities.ListViewActivity">
     <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="399dp"
+            android:layout_width="404dp"
             android:layout_height="615dp"
             android:id="@+id/allDevicesView"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
