@@ -13,6 +13,8 @@ import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
 import ie.cfarrell.riverscout.models.deviceListModel
 import kotlinx.android.synthetic.main.activity_list.*
 
+import org.jetbrains.anko.intentFor
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -72,6 +74,8 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
 
     override fun onCardClick(device: deviceListModel) {
             //todo add intent here
-          }
+        startActivityForResult(intentFor<GaugeViewActivity>().putExtra("hillfort edit", device), 0)
+
+    }
 
 }
