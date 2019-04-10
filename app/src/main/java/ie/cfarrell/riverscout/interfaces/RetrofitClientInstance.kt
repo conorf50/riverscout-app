@@ -1,5 +1,7 @@
 package ie.cfarrell.riverscout.interfaces
 
+import android.provider.Settings.Global.getString
+import ie.cfarrell.riverscout.R
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,7 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClientInstance {
 
     private var retrofit: Retrofit? = null
-    private val BASE_URL = "http://34.248.131.182:8080/"
+    //val base_url: String = getString(R.string.remote_rest_url)
+    private val BASE_URL = "http://35.246.23.66:8080/"
+    //private val BASE_URL = ;
+
 
     // create a retrofit instance, only if it has not been created yet.
     val retrofitInstance: Retrofit?
