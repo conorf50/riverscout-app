@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("ie.cfarrell.riverscout", appContext.packageName)
+        assertEquals("ie_flag.cfarrell.riverscout", appContext.packageName)
     }
 }

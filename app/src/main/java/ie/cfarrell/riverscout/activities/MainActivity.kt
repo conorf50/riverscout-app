@@ -11,7 +11,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import ie.cfarrell.riverscout.R
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.homepage.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-        val imageButtonList = findViewById<ImageButton>(R.id.buttonViewRivers)
+        val imageButtonList = findViewById<ImageButton>(R.id.imageButton)
         imageButtonList?.setOnClickListener {
             //Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
             //startActivityForResult(ListViewActivity)
