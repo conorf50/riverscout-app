@@ -35,18 +35,6 @@ import kotlinx.android.parcel.Parcelize
     "groupName": "Unit Test Group #4",
     "countryCode": "IE",
     "__v": 0
-  },
-  {
-    "_id": "5cc05199601e5606f9a7bcc2",
-    "groupLat": {
-      "$numberDecimal": "51.4541"
-    },
-    "groupLong": {
-      "$numberDecimal": "-6.9989"
-    },
-    "groupName": "Unit Test Group #5",
-    "countryCode": "IE",
-    "__v": 0
   }
 ]
 
@@ -59,6 +47,8 @@ data class groupListModel (
     var groupName :String,
     var countryCode : String) : Parcelable
 
+
+// attempt to parse the $NumberDecimal fields coming from MongoDB
 
 @Parcelize
 data class  GroupLat (

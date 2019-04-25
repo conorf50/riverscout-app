@@ -11,30 +11,32 @@ import kotlinx.android.parcel.Parcelize
 
 
 /*
-Sample response
-{
-  "groupIDS": [
-    "5cc05199601e5606f9a7bcc1"
-  ],
-  "_id": "5cc1b518617bf18c97a84398",
-  "sigfoxID": "string",
-  "EOLDate": "2019-09-09T00:00:00Z",
-  "__v": 0,
-  "activeStatus": true,
-  "countryCode": "IE",
-  "deviceHistory": null,
-  "displayName": "MAD",
-  "downlinkEnabled": true,
-  "gpsLat": {
-    "$numberDecimal": "0"
-  },
-  "gpsLong": {
-    "$numberDecimal": "0"
-  },
-  "installDate": "2019-09-09T00:00:00.000Z",
-  "replacementDate": "2019-09-09T00:00:00.000Z",
-  "reportingFreq": 12
-}
+Sample response for a list of devices per country
+[
+  {
+    "groupIDS": [
+      "5cc0625fc4504716eb3bd3d7"
+    ],
+    "_id": "5cc062abc4504716eb3bd3ee",
+    "sigfoxID": "4D413D",
+    "EOLDate": "2020-02-02T00:00:00Z",
+    "__v": 0,
+    "activeStatus": true,
+    "countryCode": "IE",
+    "deviceHistory": null,
+    "displayName": "Pycom SiPy",
+    "downlinkEnabled": false,
+    "gpsLat": {
+      "$numberDecimal": "-7.3422"
+    },
+    "gpsLong": {
+      "$numberDecimal": "56.6434"
+    },
+    "installDate": "2019-02-02T00:00:00.000Z",
+    "replacementDate": "2019-07-07T00:00:00.000Z",
+    "reportingFreq": 15
+  }
+]
 
 
  */
