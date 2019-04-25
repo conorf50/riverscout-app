@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-        val imageButtonList = findViewById<ImageButton>(R.id.buttonViewRivers)
+        val imageButtonList = findViewById<ImageButton>(R.id.imageButton)
         imageButtonList?.setOnClickListener {
             //Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
             //startActivityForResult(ListViewActivity)
