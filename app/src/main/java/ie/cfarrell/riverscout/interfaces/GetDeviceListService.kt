@@ -1,6 +1,6 @@
 package ie.cfarrell.riverscout.interfaces
 
-import ie.cfarrell.riverscout.models.deviceListModel
+import ie.cfarrell.riverscout.models.deviceDataModel
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -8,8 +8,8 @@ interface GetDeviceListService {
 
     // get retrofit to call the model and make the request
 
-    // call our API route /devices
-    @GET("/api/getAllDevices")
-    fun getAllDevices() : Call<List<deviceListModel>>
+    // call our API route which will return a list of the specified models
+    @GET("/api/getDevicesInCountry?countryCode=IE")
+    fun getAllDevices() : Call<List<deviceDataModel>>
 
 }

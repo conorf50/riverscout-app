@@ -10,7 +10,7 @@ import ie.cfarrell.riverscout.R
 import ie.cfarrell.riverscout.adapters.DeviceListListener
 import ie.cfarrell.riverscout.adapters.deviceListAdapter
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
-import ie.cfarrell.riverscout.models.deviceListModel
+import ie.cfarrell.riverscout.models.deviceDataModel
 import kotlinx.android.synthetic.main.activity_list.*
 
 import org.jetbrains.anko.intentFor
@@ -41,9 +41,9 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
         val results = service?.getAllDevices() // '?' because this API call may return nothing it may be null
         // put the network operation in a seperate thread. Use the question mark to alert the Kotlin compiler that this may return null
 
-        results?.enqueue(object : Callback<List<deviceListModel>> {
+        results?.enqueue(object : Callback<List<deviceDataModel>> {
             // we get back a list of deviceList models
-            override fun onResponse(call: Call<List<deviceListModel>>, response: Response<List<deviceListModel>>) {
+            override fun onResponse(call: Call<List<deviceDataModel>>, response: Response<List<deviceDataModel>>) {
 
                 //'response' contains the parsed JSON
                 var allDevicesList = response.body()
@@ -60,7 +60,7 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
 
             }
 
-            override fun onFailure(call: Call<List<deviceListModel>>, t: Throwable) {
+            override fun onFailure(call: Call<List<deviceDataModel>>, t: Throwable) {
                 // using applicationContext instead of 'this' based on advice from video above
                 Toast.makeText(this@ListViewActivity, "Error fetching devices", Toast.LENGTH_LONG).show()
                 // todo show a nice card view or dialog box with the error
@@ -72,7 +72,7 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
     }
 
 
-    override fun onCardClick(device: deviceListModel) {
+    override fun onCardClick(device: deviceDataModel) {
             //todo add intent here
         startActivityForResult(intentFor<GaugeViewActivity>().putExtra("hillfort edit", device), 0)
 
