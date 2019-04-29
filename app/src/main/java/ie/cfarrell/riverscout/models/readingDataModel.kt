@@ -51,10 +51,10 @@ data class readingDataModel (var _id :String,
 
 @Parcelize
 data class  WaterLevel (
-    var `$NumberDecimal` : String
+    var NumberDecimal : String
 ) : Parcelable
 
 @Parcelize
 data class  WaterTemp (
-    var `$NumberDecimal` : String
+    var NumberDecimal : String
 ) : Parcelable

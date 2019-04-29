@@ -7,11 +7,17 @@ import ie.cfarrell.riverscout.R
 import android.widget.Toast
 import ie.cfarrell.riverscout.interfaces.GetDeviceReadingsService
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
-import ie.cfarrell.riverscout.models.deviceDataModel
+import ie.cfarrell.riverscout.models.readingDataModel
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.nio.ByteOrder.LITTLE_ENDIAN
+import android.R.attr.order
+import java.nio.ByteOrder.BIG_ENDIAN
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
+
 
 class GaugeViewActivity : AppCompatActivity() {
 
@@ -42,7 +48,7 @@ class GaugeViewActivity : AppCompatActivity() {
         // see https://www.youtube.com/watch?v=FW7sY7M_E8k for details
 
         val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceReadingsService::class.java)
-        val results : Call<List<deviceDataModel>>?
+        val results : Call<List<readingDataModel>>?
         // store the results of this in a variable
 
         results = service?.getDeviceData() // '?' because this API call may return nothing it may be null
@@ -50,17 +56,19 @@ class GaugeViewActivity : AppCompatActivity() {
 
         // put the network operation in a seperate thread. Use the question mark to alert the Kotlin compiler that this may return null
 
-        results?.enqueue(object : Callback<List<deviceDataModel>> {
+        results?.enqueue(object : Callback<List<readingDataModel>> {
             // we get back a list of deviceList models
-            override fun onResponse(call: Call<List<deviceDataModel>>, response: Response<List<deviceDataModel>>) {
+            override fun onResponse(call: Call<List<readingDataModel>>, response: Response<List<readingDataModel>>) {
 
                 //'response' contains the parsed JSON
-                var allDevicesList = response.body()
-
+                var gaugeReadings= response.body()
+                //toast("Number of readings = " + gaugeReadings!!.size)
+                var reading = gaugeReadings!![0]
+                val rawHexVal = reading.waterLevel
 
             }
 
-            override fun onFailure(call: Call<List<deviceDataModel>>, t: Throwable) {
+            override fun onFailure(call: Call<List<readingDataModel>>, t: Throwable) {
                 // using applicationContext instead of 'this' based on advice from video above
                 Toast.makeText( this@GaugeViewActivity, "Error fetching devices", Toast.LENGTH_LONG).show()
                 // todo show a nice card view or dialog box with the error
