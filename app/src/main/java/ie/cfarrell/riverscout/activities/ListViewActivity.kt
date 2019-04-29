@@ -1,5 +1,6 @@
 package ie.cfarrell.riverscout.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,8 +15,10 @@ import ie.cfarrell.riverscout.adapters.deviceListAdapter
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
 import ie.cfarrell.riverscout.models.deviceDataModel
 import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.android.synthetic.main.card_favourite.*
 
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.toast
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +32,8 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
         setContentView(R.layout.activity_list)
         // display a back button in the app bar
         actionBar?.setDisplayHomeAsUpEnabled(true)
-
+        val countryCode = intent.getStringExtra("countryCode")
+        toast("Country code" + countryCode )
         // Set the RecyclerView layout manager
         var layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = RecyclerView.VERTICAL
@@ -49,7 +53,7 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
 
                 //'response' contains the parsed JSON
                 var allDevicesList = response.body()
-                Toast.makeText(applicationContext,"Found " + allDevicesList!!.size.toString(), Toast.LENGTH_LONG).show()
+                //Toast.makeText(applicationContext,"Found " + allDevicesList!!.size.toString(), Toast.LENGTH_LONG).show()
                 // replace the adapter with the one from placemark
 //                val adapter = deviceListAdapter(allDevicesList, this)
 //
@@ -74,9 +78,17 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
     }
 
 
-    override fun onCardClick(device: deviceDataModel) {
-            //todo add intent here
-        startActivityForResult(intentFor<GaugeViewActivity>().putExtra("hillfort edit", device), 0)
+    override fun onCardClick(deviceList: deviceDataModel) {
+        // since we want to pass both the device name and ID to the data view activity
+        //  we need to put them into a Bundle
+        // see https://stackoverflow.com/questions/8452526/android-can-i-use-putextra-to-pass-multiple-values
+        val deviceInfo = Bundle()
+
+        deviceInfo.putString("deviceName", deviceList.displayName)
+        deviceInfo.putString("deviceID", deviceList._id)
+        deviceInfo.putString("gpsLat", deviceList.gpsLat.toString())
+        deviceInfo.putString("gpsLong", deviceList.gpsLong.toString())
+        startActivityForResult(intentFor<GaugeViewActivity>().putExtras(deviceInfo), 0)
 
     }
 

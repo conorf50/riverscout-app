@@ -8,7 +8,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_gauge_view">View gauge details</string>
     <string name="title_activity_favourites_">Favourites</string>
-    <string name="title_activity_list">List of rivers</string>
+    <string name="title_activity_list">List of gauges</string>
 
 
 </resources>
