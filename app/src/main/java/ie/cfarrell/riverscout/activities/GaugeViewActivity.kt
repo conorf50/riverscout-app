@@ -5,13 +5,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ie.cfarrell.riverscout.R
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import ie.cfarrell.riverscout.adapters.deviceListAdapter
-import ie.cfarrell.riverscout.interfaces.GetDeviceData
-import ie.cfarrell.riverscout.interfaces.GetIEDeviceListService
+import ie.cfarrell.riverscout.interfaces.GetDeviceReadingsService
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
 import ie.cfarrell.riverscout.models.deviceDataModel
-import kotlinx.android.synthetic.main.activity_list.*
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,7 +31,6 @@ class GaugeViewActivity : AppCompatActivity() {
 
         val latLngTextView : TextView = findViewById(R.id.location_textview)
         latLngTextView.setText(gpsLong + "," + gpsLat)
-        toast("device NAME" + gpsLat)
         // gauge_name
 
 
@@ -46,7 +41,7 @@ class GaugeViewActivity : AppCompatActivity() {
         // Invoke the Retrofit instance here
         // see https://www.youtube.com/watch?v=FW7sY7M_E8k for details
 
-        val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceData::class.java)
+        val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceReadingsService::class.java)
         val results : Call<List<deviceDataModel>>?
         // store the results of this in a variable
 
@@ -61,13 +56,6 @@ class GaugeViewActivity : AppCompatActivity() {
 
                 //'response' contains the parsed JSON
                 var allDevicesList = response.body()
-                //Toast.makeText(applicationContext,"Found " + allDevicesList!!.size.toString(), Toast.LENGTH_LONG).show()
-                // replace the adapter with the one from placemark
-//                val adapter = deviceListAdapter(allDevicesList, this)
-//
-//
-//                allDevicesView.layoutManager = layoutManager
-//                allDevicesView.adapter = adapter
 
 
             }

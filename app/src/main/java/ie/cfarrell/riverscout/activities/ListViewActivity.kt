@@ -1,12 +1,11 @@
 package ie.cfarrell.riverscout.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ie.cfarrell.riverscout.interfaces.GetIEDeviceListService
+import ie.cfarrell.riverscout.interfaces.GetDeviceListService
 
 import ie.cfarrell.riverscout.R
 import ie.cfarrell.riverscout.adapters.DeviceListListener
@@ -14,7 +13,6 @@ import ie.cfarrell.riverscout.adapters.deviceListAdapter
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
 import ie.cfarrell.riverscout.models.deviceDataModel
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.card_favourite.*
 
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
@@ -41,7 +39,7 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
         // Invoke the Retrofit instance here
         // see https://www.youtube.com/watch?v=FW7sY7M_E8k for details
 
-        val service = RetrofitClientInstance.retrofitInstance?.create(GetIEDeviceListService::class.java)
+        val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceListService::class.java)
         val results : Call<List<deviceDataModel>>?
         // store the results of this in a variable
 

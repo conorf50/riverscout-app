@@ -61,7 +61,7 @@ data class deviceDataModel (var groupIDS :ArrayList<String>,
                             var deviceHistory : String?,
                             var displayName :String,
                             var downlinkEnabled : Boolean,
-                            var gpsLat: Double, // use the custom model defined below
+                            var gpsLat: Double,
                             var gpsLong: Double,
                             var installDate : String,
                             var replacementDate : String,
