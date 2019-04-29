@@ -17,7 +17,7 @@ object RetrofitClientInstance {
 
     private var retrofit: Retrofit? = null
     //val base_url: String = getString(R.string.remote_rest_url)
-    private val BASE_URL = "http://35.246.23.66:8080/"
+    private val BASE_URL = "http://34.245.194.114:8080"
     //private val BASE_URL = ;
 
 

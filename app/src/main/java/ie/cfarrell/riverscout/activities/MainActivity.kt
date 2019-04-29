@@ -23,11 +23,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-        val imageButtonList = findViewById<ImageButton>(R.id.imageButton)
-        imageButtonList?.setOnClickListener {
+        val imageButtonIreland = findViewById<ImageButton>(R.id.irelandButton)
+        imageButtonIreland?.setOnClickListener {
             //Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
             //startActivityForResult(ListViewActivity)
             val intent = Intent(this, ListViewActivity::class.java)
+            intent.putExtra("countryCode", "IE")
+            startActivityForResult(intent, 0)
+        }
+
+
+
+        val imageButtonUK = findViewById<ImageButton>(R.id.ukButton)
+        imageButtonUK?.setOnClickListener {
+            //Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
+            //startActivityForResult(ListViewActivity)
+            val intent = Intent(this, ListViewActivity::class.java)
+            intent.putExtra("countryCode", "UK")
+            // change the request code
             startActivityForResult(intent, 0)
         }
 

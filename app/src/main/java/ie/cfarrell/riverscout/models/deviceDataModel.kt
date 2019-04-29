@@ -2,6 +2,7 @@ package ie.cfarrell.riverscout.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 /*
     Special thanks to Brandan Jones' tutorial 'Use Retrofit to parse JSON in Kotlin Android app'
@@ -52,23 +53,22 @@ Sample response for a list of devices per country
 @Parcelize
 data class deviceDataModel (var groupIDS :ArrayList<String>,
                             var _id : String,
-                            var sigfoxId :String,
+                            var sigfoxID :String,
                             var EOLDate :String,
-                            var _v :String,
+                            var __v :String,
                             var activeStatus :Boolean,
                             var countryCode: String,
-                            var deviceHistory : String,
+                            var deviceHistory : String?,
                             var displayName :String,
                             var downlinkEnabled : Boolean,
-                            var gpsLat: GpsLat, // use the custom model defined below
-                            var gpsLong: GpsLong,
+                            var gpsLat: Double, // use the custom model defined below
+                            var gpsLong: Double,
                             var installDate : String,
                             var replacementDate : String,
                             var reportingFreq : Int) : Parcelable
 
 
-@Parcelize
-data class GpsLat (var `$NumberDecimal`: String) : Parcelable
-
-@Parcelize
-data class GpsLong (var `$NumberDecimal`: String) : Parcelable
+////@Parcelize
+//data class GpsLat (var `$NumberDecimal`: String)
+//
+//data class GpsLong (var `$NumberDecimal`: String)

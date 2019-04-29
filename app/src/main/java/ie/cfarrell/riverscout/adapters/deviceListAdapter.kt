@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ie.cfarrell.riverscout.R
 import ie.cfarrell.riverscout.activities.GaugeViewActivity
-import ie.cfarrell.riverscout.models.deviceListModel
+import ie.cfarrell.riverscout.models.deviceDataModel
 import kotlinx.android.synthetic.main.card_device_info.view.*
 
 /*
@@ -20,10 +20,10 @@ import kotlinx.android.synthetic.main.card_device_info.view.*
 
 
 interface DeviceListListener {
-    fun onCardClick(devlceList: deviceListModel)
+    fun onCardClick(devlceList: deviceDataModel)
 }
 
-class deviceListAdapter constructor(val allDevices: List<deviceListModel>?,
+class deviceListAdapter constructor(val allDevices: List<deviceDataModel>?,
                                    private val listener: DeviceListListener) : RecyclerView.Adapter<deviceListAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -39,7 +39,7 @@ class deviceListAdapter constructor(val allDevices: List<deviceListModel>?,
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(device: deviceListModel,  listener : DeviceListListener) {
+        fun bind(device: deviceDataModel,  listener : DeviceListListener) {
             itemView.deviceName.text = device.displayName
             itemView.setOnClickListener { listener.onCardClick(device) }
 
