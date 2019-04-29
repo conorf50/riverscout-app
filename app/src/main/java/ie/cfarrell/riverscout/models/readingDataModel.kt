@@ -40,21 +40,20 @@ sample reading for device
 
 
  */
-@Parcelize
-data class readingDataModel (var _id :String,
-                             var deviceUID: String,
-                             var waterLevel : WaterLevel,
-                             var rawHexData: String,
-                             var waterTemp :WaterTemp,
-                             var timestamp : String) : Parcelable
+    @Parcelize
+    data class readingDataModel (var _id :String,
+                                 var deviceUID: String,
+                                 var waterLevel : WaterLevel,
+                                 var rawHexData: String,
+                                 var waterTemp :WaterTemp,
+                                 var timestamp : String) : Parcelable
 
+    @Parcelize
+    data class  WaterLevel (
+        var NumberDecimal : String
+    ) : Parcelable
 
-@Parcelize
-data class  WaterLevel (
-    var NumberDecimal : String
-) : Parcelable
-
-@Parcelize
-data class  WaterTemp (
-    var NumberDecimal : String
-) : Parcelable
+    @Parcelize
+    data class  WaterTemp (
+        var NumberDecimal : String
+    ) : Parcelable

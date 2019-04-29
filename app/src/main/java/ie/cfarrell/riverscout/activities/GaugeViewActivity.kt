@@ -14,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.nio.ByteOrder.LITTLE_ENDIAN
 import android.R.attr.order
+import android.widget.CheckBox
 import java.nio.ByteOrder.BIG_ENDIAN
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -25,6 +26,10 @@ class GaugeViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gauge_view)
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        // 'unpack' the Bundle in which the name and the ID of the device are
+
+
+
         val extras = intent.extras
 
         val deviceName = extras.getString("deviceName")
@@ -38,6 +43,11 @@ class GaugeViewActivity : AppCompatActivity() {
         val latLngTextView : TextView = findViewById(R.id.location_textview)
         latLngTextView.setText(gpsLong + "," + gpsLat)
         // gauge_name
+
+        val favChkBox : CheckBox = findViewById(R.id.markFavourite)
+
+
+
 
 
 
@@ -83,6 +93,7 @@ class GaugeViewActivity : AppCompatActivity() {
 
 
     }
+
 
 
 
