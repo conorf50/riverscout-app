@@ -5,7 +5,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ie.cfarrell.riverscout.interfaces.GetDeviceListService
+import ie.cfarrell.riverscout.interfaces.GetIEDeviceListService
+import ie.cfarrell.riverscout.interfaces.GetUKDeviceListService
+
 import ie.cfarrell.riverscout.R
 import ie.cfarrell.riverscout.adapters.DeviceListListener
 import ie.cfarrell.riverscout.adapters.deviceListAdapter
@@ -35,7 +37,7 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
 
         // Invoke the Retrofit instance here
         // see https://www.youtube.com/watch?v=FW7sY7M_E8k for details
-        val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceListService::class.java)
+        val service = RetrofitClientInstance.retrofitInstance?.create(GetIEDeviceListService::class.java)
 
         // store the results of this in a variable
         val results = service?.getAllDevices() // '?' because this API call may return nothing it may be null
