@@ -5,17 +5,20 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ie.cfarrell.riverscout.R
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import ie.cfarrell.riverscout.adapters.deviceListAdapter
-import ie.cfarrell.riverscout.interfaces.GetDeviceData
-import ie.cfarrell.riverscout.interfaces.GetIEDeviceListService
+import ie.cfarrell.riverscout.interfaces.GetDeviceReadingsService
 import ie.cfarrell.riverscout.interfaces.RetrofitClientInstance
-import ie.cfarrell.riverscout.models.deviceDataModel
-import kotlinx.android.synthetic.main.activity_list.*
+import ie.cfarrell.riverscout.models.readingDataModel
 import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.nio.ByteOrder.LITTLE_ENDIAN
+import android.R.attr.order
+import android.widget.CheckBox
+import java.nio.ByteOrder.BIG_ENDIAN
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
+
 
 class GaugeViewActivity : AppCompatActivity() {
 
@@ -23,6 +26,10 @@ class GaugeViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gauge_view)
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        // 'unpack' the Bundle in which the name and the ID of the device are
+
+
+
         val extras = intent.extras
 
         val deviceName = extras.getString("deviceName")
@@ -35,8 +42,12 @@ class GaugeViewActivity : AppCompatActivity() {
 
         val latLngTextView : TextView = findViewById(R.id.location_textview)
         latLngTextView.setText(gpsLong + "," + gpsLat)
-        toast("device NAME" + gpsLat)
         // gauge_name
+
+        val favChkBox : CheckBox = findViewById(R.id.markFavourite)
+
+
+
 
 
 
@@ -46,8 +57,8 @@ class GaugeViewActivity : AppCompatActivity() {
         // Invoke the Retrofit instance here
         // see https://www.youtube.com/watch?v=FW7sY7M_E8k for details
 
-        val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceData::class.java)
-        val results : Call<List<deviceDataModel>>?
+        val service = RetrofitClientInstance.retrofitInstance?.create(GetDeviceReadingsService::class.java)
+        val results : Call<List<readingDataModel>>?
         // store the results of this in a variable
 
         results = service?.getDeviceData() // '?' because this API call may return nothing it may be null
@@ -55,24 +66,19 @@ class GaugeViewActivity : AppCompatActivity() {
 
         // put the network operation in a seperate thread. Use the question mark to alert the Kotlin compiler that this may return null
 
-        results?.enqueue(object : Callback<List<deviceDataModel>> {
+        results?.enqueue(object : Callback<List<readingDataModel>> {
             // we get back a list of deviceList models
-            override fun onResponse(call: Call<List<deviceDataModel>>, response: Response<List<deviceDataModel>>) {
+            override fun onResponse(call: Call<List<readingDataModel>>, response: Response<List<readingDataModel>>) {
 
                 //'response' contains the parsed JSON
-                var allDevicesList = response.body()
-                //Toast.makeText(applicationContext,"Found " + allDevicesList!!.size.toString(), Toast.LENGTH_LONG).show()
-                // replace the adapter with the one from placemark
-//                val adapter = deviceListAdapter(allDevicesList, this)
-//
-//
-//                allDevicesView.layoutManager = layoutManager
-//                allDevicesView.adapter = adapter
-
+                var gaugeReadings= response.body()
+                //toast("Number of readings = " + gaugeReadings!!.size)
+                var reading = gaugeReadings!![0]
+                val rawHexVal = reading.waterLevel
 
             }
 
-            override fun onFailure(call: Call<List<deviceDataModel>>, t: Throwable) {
+            override fun onFailure(call: Call<List<readingDataModel>>, t: Throwable) {
                 // using applicationContext instead of 'this' based on advice from video above
                 Toast.makeText( this@GaugeViewActivity, "Error fetching devices", Toast.LENGTH_LONG).show()
                 // todo show a nice card view or dialog box with the error
@@ -87,6 +93,7 @@ class GaugeViewActivity : AppCompatActivity() {
 
 
     }
+
 
 
 

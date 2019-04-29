@@ -50,22 +50,22 @@ Sample response for a list of devices per country
 
 
 
-@Parcelize
-data class deviceDataModel (var groupIDS :ArrayList<String>,
-                            var _id : String,
-                            var sigfoxID :String,
-                            var EOLDate :String,
-                            var __v :String,
-                            var activeStatus :Boolean,
-                            var countryCode: String,
-                            var deviceHistory : String?,
-                            var displayName :String,
-                            var downlinkEnabled : Boolean,
-                            var gpsLat: Double, // use the custom model defined below
-                            var gpsLong: Double,
-                            var installDate : String,
-                            var replacementDate : String,
-                            var reportingFreq : Int) : Parcelable
+    @Parcelize
+    data class deviceDataModel (var groupIDS :ArrayList<String>,
+                                var _id : String,
+                                var sigfoxID :String,
+                                var EOLDate :String,
+                                var __v :String,
+                                var activeStatus :Boolean,
+                                var countryCode: String,
+                                var deviceHistory : String?,
+                                var displayName :String,
+                                var downlinkEnabled : Boolean,
+                                var gpsLat: Double,
+                                var gpsLong: Double,
+                                var installDate : String,
+                                var replacementDate : String,
+                                var reportingFreq : Int) : Parcelable
 
 
 ////@Parcelize

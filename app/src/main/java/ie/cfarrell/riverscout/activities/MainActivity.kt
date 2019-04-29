@@ -73,17 +73,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivityForResult(intent, 0)
 
             }
-            R.id.nav_map -> {
-                //val intent = Intent(this, GaugeViewActivity::class.java)
-                //startActivityForResult(intent, 0)
-                Toast.makeText(this, "Feature only available in Riverscout Premium", Toast.LENGTH_SHORT).show()
-
-            }
-            R.id.nav_list -> {
-
-                val intent = Intent(this, ListViewActivity::class.java)
-                startActivityForResult(intent, 0)
-            }
+//            R.id.nav_map -> {
+//                //val intent = Intent(this, GaugeViewActivity::class.java)
+//                //startActivityForResult(intent, 0)
+//                Toast.makeText(this, "Feature only available in Riverscout Premium", Toast.LENGTH_SHORT).show()
+//
+//            }
+//            R.id.nav_list -> {
+//
+//                val intent = Intent(this, ListViewActivity::class.java)
+//                startActivityForResult(intent, 0)
+//            }
 
         }
 
