@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ie.cfarrell.riverscout.interfaces.GetIEDeviceListService
-import ie.cfarrell.riverscout.interfaces.GetUKDeviceListService
 
 import ie.cfarrell.riverscout.R
 import ie.cfarrell.riverscout.adapters.DeviceListListener
@@ -47,7 +46,7 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
         // store the results of this in a variable
 
         if (countryCode == "IE") {
-            results =  service?.getIEDevices() // '?' because this API call may return nothing it may be null
+            results =  service?.getIEDevices() // make a request for devices in Ireland
         }
         else{
             results = service?.getUKDevices() // '?' because this API call may return nothing it may be null
@@ -93,7 +92,7 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
         val deviceInfo = Bundle()
 
         deviceInfo.putString("deviceName", deviceList.displayName)
-        deviceInfo.putString("deviceID", deviceList._id)
+        deviceInfo.putString("deviceID", deviceList.sigfoxID)
         deviceInfo.putString("gpsLat", deviceList.gpsLat.toString())
         deviceInfo.putString("gpsLong", deviceList.gpsLong.toString())
         startActivityForResult(intentFor<GaugeViewActivity>().putExtras(deviceInfo), 0)
