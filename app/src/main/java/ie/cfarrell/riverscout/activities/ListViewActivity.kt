@@ -41,10 +41,18 @@ class ListViewActivity : AppCompatActivity(), DeviceListListener {
 
         // Invoke the Retrofit instance here
         // see https://www.youtube.com/watch?v=FW7sY7M_E8k for details
-        val service = RetrofitClientInstance.retrofitInstance?.create(GetIEDeviceListService::class.java)
 
+        val service = RetrofitClientInstance.retrofitInstance?.create(GetIEDeviceListService::class.java)
+        val results : Call<List<deviceDataModel>>?
         // store the results of this in a variable
-        val results = service?.getAllDevices() // '?' because this API call may return nothing it may be null
+
+        if (countryCode == "IE") {
+            results =  service?.getIEDevices() // '?' because this API call may return nothing it may be null
+        }
+        else{
+            results = service?.getUKDevices() // '?' because this API call may return nothing it may be null
+        }
+
         // put the network operation in a seperate thread. Use the question mark to alert the Kotlin compiler that this may return null
 
         results?.enqueue(object : Callback<List<deviceDataModel>> {

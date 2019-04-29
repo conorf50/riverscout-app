@@ -10,6 +10,10 @@ interface GetIEDeviceListService {
 
     // call our API route which will return a list of the specified models
     @GET("/api/getDevicesInCountry?countryCode=IE")
-    fun getAllDevices() : Call<List<deviceDataModel>>
+    fun getIEDevices() : Call<List<deviceDataModel>>
+
+
+    @GET("/api/getDevicesInCountry?countryCode=UK")
+    fun getUKDevices() : Call<List<deviceDataModel>>
 
 }

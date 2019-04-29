@@ -24,7 +24,7 @@ class GaugeViewActivity : AppCompatActivity() {
         gaugeNameView.setText(deviceName)
 
         val latLngTextView : TextView = findViewById(R.id.location_textview)
-        latLngTextView.setText(gpsLat + "," + gpsLong)
+        latLngTextView.setText(gpsLong + "," + gpsLat)
         toast("device NAME" + gpsLat)
         // gauge_name
     }
